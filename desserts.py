@@ -29,6 +29,14 @@ class Cupcake:
             self.qty = 0
         else:   
             self.qty = self.qty - amount_bought
+    
+    @staticmethod
+    def scale_recipe(ingredients, amounts):
+        recipe_list = []
+        for ingredient in ingredients:
+            modified_ingredient = (ingredient[0], ingredient[1] * amounts)
+            recipe_list.append(modified_ingredient)
+        return recipe_list
 
 if __name__ == '__main__':
     import doctest

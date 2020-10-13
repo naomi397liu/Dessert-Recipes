@@ -17,7 +17,7 @@ class Cupcake:
         self.price = price
         self.qty = 0
     
-        self.cache[self.name]=(flavor,price)
+        self.cache[self.name] = self
     
     def add_stock(self, amount_added):
         self.qty = self.qty + amount_added
@@ -37,6 +37,13 @@ class Cupcake:
             modified_ingredient = (ingredient[0], ingredient[1] * amounts)
             recipe_list.append(modified_ingredient)
         return recipe_list
+    
+    @classmethod
+    def get(cls, name):
+        selected_cupcake = cls.cache.get(name)
+        if selected_cupcake == None:
+            print("Sorry, that cupcake doesn't exist")
+        return selected_cupcake
 
 if __name__ == '__main__':
     import doctest
